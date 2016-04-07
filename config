@@ -236,9 +236,9 @@ exec xrdb ~/.Xresources
 exec --no-startup-id i3-msg 'workspace $wks1; split h; exec xfce4-terminal; exec xfce4-terminal'
 exec --no-startup-id sleep 1; i3-msg 'workspace $wks1; split v; exec wicd-client'
 exec --no-startup-id sleep 2; i3-msg 'workspace $wks2; exec thunar'
-exec --no-startup-id sleep 3; i3-msg 'workspace $wks3; exec google-chrome-stable'
-exec --no-startup-id sleep 5; i3-msg 'workspace $wks10; exec spotify'
-exec --no-startup-id sleep 6; i3-msg 'workspace $wks1'
+exec --no-startup-id sleep 4; i3-msg 'workspace $wks3; exec google-chrome-stable'
+exec --no-startup-id sleep 6; i3-msg 'workspace $wks10; exec spotify'
+exec --no-startup-id sleep 8; i3-msg 'workspace $wks1'
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
