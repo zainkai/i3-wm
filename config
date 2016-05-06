@@ -10,7 +10,6 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-#mod4 = super key
 
 #Font~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set $main_font "cantarell"
@@ -18,7 +17,7 @@ set $main_font "cantarell"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:$main_font 9
+font pango:$main_font 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -35,12 +34,11 @@ font pango:$main_font 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-#~~~ replaced with rofi ~~~
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -169,7 +167,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #base 00 - 0F colors~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        set $base00 #1793d0
+        set $base00 #0d0d0d
         set $base01 #333333
         set $base02 #383a3b
         set $base03 #dedede
@@ -196,7 +194,7 @@ bar {
         #status_command i3status -c /home/zainkai/.config/i3/i3status.conf
 
         #font
-        font pango:$main_font 10.5
+        font pango:$main_font 10
 
         #custom bar colors
         colors {
@@ -212,47 +210,39 @@ bar {
 }
 
 #rofi keybinds~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-bindsym $mod+d exec rofi -show run -bg "$base01" -bc "$base00" -fg "$base03" -hlbg "$base00" -font "$main_font 11" -lines "15" -width "35" -opacity "90"
+bindsym $mod+d exec rofi -show run -bg "$base01" -bc "$base00" -fg "$base03" -hlbg "$base00" -font "$main_font 10" -lines "15" -width "35" -opacity "90"
+#bindsym $mod+d exec rofi -show run -color-normal "$base01 $base03 $base03 $base00 $base04" -font "$main_font 10" -lines "15" -width "35" -opacity "90"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #important startup app~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-exec feh --randomize --bg-scale /home/zainkai/Desktop/wallpaper/*
+exec feh --randomize --bg-scale /home/zainkai/Pictures/wallpaper/*
+exec blueman-applet
+exec nm-applet
+exec xfce4-power-manager
 
-exec compton -f --opacity-rule 90:'class_g *="Wicd-client"' --opacity-rule 90:'class_g *="Thunar"' --opacity-rule 90:'class_g *="Subl3"' --opacity-rule 90:'class_g *="Spotify"' -b
+#audio
+exec pa-applet; exec start-pulseaudio-x11 
 
-exec xbindkeys
-
-#bluetooth
-exec blueberry-tray
-
-#load .Xresources
-exec xrdb ~/.Xresources
+exec pamac-tray
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-
 
 #startup applications~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 exec --no-startup-id i3-msg 'workspace $wks1; split h; exec xfce4-terminal; exec xfce4-terminal'
-exec --no-startup-id sleep 1; i3-msg 'workspace $wks1; split v; exec wicd-client'
+#exec --no-startup-id sleep 1; i3-msg 'workspace $wks1; split v; exec wicd-client'
 exec --no-startup-id sleep 2; i3-msg 'workspace $wks2; exec thunar'
 exec --no-startup-id sleep 4; i3-msg 'workspace $wks3; exec google-chrome-stable'
-exec --no-startup-id sleep 6; i3-msg 'workspace $wks10; exec spotify'
 exec --no-startup-id sleep 8; i3-msg 'workspace $wks1'
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 #allowed floating windows~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 for_window [class="Lxappearance"] floating enable
-for_window [class="Pavucontrol"] floating enable
+#for_window [class="Pavucontrol"] floating enable
 for_window [class="File-roller"] floating enable
-for_window [class="Steam"] floating enable
-for_window [class="Blueberry.py"] floating enable
-for_window [class="Gnome-system-monitor"] floating enable
+#for_window [class="Steam"] floating enable
+#for_window [class="Blueberry.py"] floating enable
+#for_window [class="Gnome-system-monitor"] floating enable
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #custom keybinds~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 bindsym $mod+l exec i3lock --color "#000000" -f 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
